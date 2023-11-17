@@ -1,0 +1,16 @@
+server:
+  port: 9090
+
+config:
+  logging:
+    level: DEBUG
+
+spring:
+  application:
+    name: main
+  web:
+    resources:
+      add-mappings: false
+
+scheduled:
+  token-cleanup: 0 0/5 * * * ?

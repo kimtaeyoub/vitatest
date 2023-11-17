@@ -1,0 +1,20 @@
+version: '2.2'
+
+services:
+  vita-db:
+    image: mysql:8.0
+    container_name: vita-db
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    volumes:
+      - "./mysql/initial/:/docker-entrypoint-initdb.d"
+    restart: always
+    ports:
+      - "53306:3306"
+    environment:
+      MYSQL_DATABASE: "vita"
+      MYSQL_USER: "vita"
+      MYSQL_PASSWORD: "vita1!"
+      MYSQL_ROOT_PASSWORD: "root1!"

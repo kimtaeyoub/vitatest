@@ -1,0 +1,55 @@
+spring:
+  config:
+    import: "classpath:config.yml, \
+     classpath:/config/components.yml \
+     "
+  profiles:
+    default: local
+
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://127.0.0.1:53307/vita?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: vita
+    password: 'vita1!'
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      maximum-pool-size: 40
+      connection-timeout: 10000
+      idle-timeout: 300000
+      max-lifetime: 1800000
+
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          no-cache: true
+          no-store: true
+          max-age: 0
+
+  mail:
+    host: smtp.office365.com
+    port: 587
+    default-encoding: UTF-8
+    username: tykim@blue-core.com
+    password: tmdak1470!
+    protocol: smtp
+    properties:
+      mail:
+        transport:
+          protocol: smtps
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+        debug: true
+
+mybatis:
+  mapper-locations: classpath*:/mybatis/*.xml
+
+server:
+  compression:
+    enabled: true
